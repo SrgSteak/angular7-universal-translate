@@ -22,7 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'angular7-universal-translate'}),
     HttpClientModule,
     TranslateModule.forRoot({
             loader: {
@@ -31,14 +31,14 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-    LocalizeRouterModule.forRoot(routes, {
-      parser: {
-        provide: LocalizeParser,
-        useFactory: (translate, location, settings, http) =>
-            new LocalizeRouterHttpLoader(translate, location, settings, http),
-        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
-      }
-    }),
+    // LocalizeRouterModule.forRoot(routes, {
+    //   parser: {
+    //     provide: LocalizeParser,
+    //     useFactory: (translate, location, settings, http) =>
+    //         new LocalizeRouterHttpLoader(translate, location, settings, http),
+    //     deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
+    //   }
+    // }),
     RouterModule.forRoot(routes),
     ShopModule,
   ],

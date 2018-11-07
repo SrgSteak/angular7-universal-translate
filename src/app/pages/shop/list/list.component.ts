@@ -8,11 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  private url: string;
-  private townslug: string;
+  public townslug: string;
 
   constructor(private route: ActivatedRoute) {
-    this.url = this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
       this.townslug = params.get('country') + '/' + params.get('province') + '/' + params.get('town');
     });
   }

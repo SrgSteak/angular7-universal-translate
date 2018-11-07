@@ -3,19 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@angular/animations": "^7.0.2",
     "@angular/common": "7.0.1",
     "@angular/compiler": "7.0.1",
     "@angular/core": "7.0.1",
     "@angular/forms": "7.0.1",
+    "@angular/http": "^7.0.2",
     "@angular/platform-browser": "7.0.1",
     "@angular/platform-browser-dynamic": "7.0.1",
+    "@angular/platform-server": "^7.0.2",
     "@angular/router": "7.0.1",
     "@gilsdav/ngx-translate-router": "1.0.2",
     "@gilsdav/ngx-translate-router-http-loader": "1.0.0",
+    "@nguniversal/express-engine": "^7.0.2",
+    "@nguniversal/module-map-ngfactory-loader": "^7.0.2",
     "@ngx-translate/core": "11.0.0",
     "@ngx-translate/http-loader": "^4.0.0",
     "core-js": "2.5.7",
     "rxjs": "6.3.3",
+    "ts-loader": "^5.3.0",
     "zone.js": "0.8.26"
   },
   "scripts": {
@@ -24,7 +30,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:ssr": "ng build --prod && ng run demo:server:production && tsc -p server.tsconfig.json",
+    "serve:ssr": "node dist/server"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
