@@ -4,7 +4,7 @@ import { HttpLoaderFactory } from "./app.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { LocalizeRouterModule, LocalizeParser, LocalizeRouterSettings } from "@gilsdav/ngx-translate-router";
 import { LocalizeRouterHttpLoader } from "@gilsdav/ngx-translate-router-http-loader";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes } from "@angular/router";
 import { ListComponent } from "./pages/shop/list/list.component";
 import {Location} from '@angular/common';
 
@@ -32,8 +32,7 @@ export const routes: Routes = [
     })
   ],
   exports: [
-    TranslatePipe,
-    // RouterModule
+    TranslatePipe
   ]
 })
 export class AppClientModule {}

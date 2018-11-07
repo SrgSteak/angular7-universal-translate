@@ -141,15 +141,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.module */ "./src/app/app.module.ts");
 /* harmony import */ var _gilsdav_ngx_translate_router_http_loader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @gilsdav/ngx-translate-router-http-loader */ "@gilsdav/ngx-translate-router-http-loader");
 /* harmony import */ var _gilsdav_ngx_translate_router_http_loader__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_gilsdav_ngx_translate_router_http_loader__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "@angular/router");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_angular_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _pages_shop_list_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/shop/list/list.component */ "./src/app/pages/shop/list/list.component.ts");
-
+/* harmony import */ var _pages_shop_list_list_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/shop/list/list.component */ "./src/app/pages/shop/list/list.component.ts");
 
 
 
 var routes = [
-    { path: 'list/:country/:province/:town', component: _pages_shop_list_list_component__WEBPACK_IMPORTED_MODULE_3__["ListComponent"] }
+    { path: 'list/:country/:province/:town', component: _pages_shop_list_list_component__WEBPACK_IMPORTED_MODULE_2__["ListComponent"] }
 ];
 var ɵ0 = _app_module__WEBPACK_IMPORTED_MODULE_0__["HttpLoaderFactory"], ɵ1 = function (translate, location, settings, http) {
     return new _gilsdav_ngx_translate_router_http_loader__WEBPACK_IMPORTED_MODULE_1__["LocalizeRouterHttpLoader"](translate, location, settings, http);
@@ -438,9 +435,9 @@ var LocalizeUniversalLoader = /** @class */ (function (_super) {
     LocalizeUniversalLoader.prototype.load = function (routes) {
         var _this = this;
         return new Promise(function (resolve) {
-            // let data: any = JSON.parse(fs.readFileSync(`assets/locales.json`, 'utf8'));
-            _this.locales = ['de', 'en', 'it', 'fr']; // data.locales;
-            _this.prefix = "ROUTES."; // data.prefix;
+            var data = JSON.parse(fs_extra__WEBPACK_IMPORTED_MODULE_4__["readFileSync"]("src/assets/locales.json", 'utf8'));
+            _this.locales = data.locales;
+            _this.prefix = data.prefix;
             _this.init(routes).then(resolve);
         });
     };

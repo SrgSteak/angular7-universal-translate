@@ -1,17 +1,15 @@
-import {NgModule} from '@angular/core';
-import {ServerModule} from '@angular/platform-server';
-import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
-import {AppComponent} from './app.component';
-import {AppModule, HttpLoaderFactory} from './app.module';
+import { NgModule } from '@angular/core';
+import { ServerModule } from '@angular/platform-server';
+import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
+import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 import { LocalizeParser, LocalizeRouterSettings, LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { Routes } from '@angular/router';
 import { TranslateService, TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 // this will only work on the server because it is a node.js module.
 import * as fs from 'fs-extra';
-import { HttpClient } from '@angular/common/http';
-import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
 import { routes } from './app.client.module';
 
 @NgModule({
@@ -52,9 +50,9 @@ export class LocalizeUniversalLoader extends LocalizeParser {
    */
   public load(routes: Routes): Promise<any> {
     return new Promise((resolve: any) => {
-      // let data: any = JSON.parse(fs.readFileSync(`assets/locales.json`, 'utf8'));
-      this.locales = ['de', 'en', 'it', 'fr'] // data.locales;
-      this.prefix = "ROUTES." // data.prefix;
+      let data: any = JSON.parse(fs.readFileSync(`src/assets/locales.json`, 'utf8'));
+      this.locales = data.locales;
+      this.prefix = data.prefix;
       this.init(routes).then(resolve);
     });
   }
