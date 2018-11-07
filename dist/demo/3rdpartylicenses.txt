@@ -331,3 +331,9 @@ MIT
 
 @ngx-translate/core
 MIT
+
+@gilsdav/ngx-translate-router
+MIT
+
+@gilsdav/ngx-translate-router-http-loader
+MIT

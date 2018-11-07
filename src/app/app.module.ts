@@ -1,19 +1,11 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from '@angular/core';
-import {Location} from '@angular/common';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
-import {LocalizeRouterModule, LocalizeParser, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
-import {LocalizeRouterHttpLoader} from '@gilsdav/ngx-translate-router-http-loader';
+import { HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ShopModule } from './pages/shop/shop.module';
-import { ListComponent } from './pages/shop/list/list.component';
-
-const routes = [
-  {path: 'list/:country/:province/:town', component: ListComponent}
-];
+import { AppClientModule, routes } from "./app.client.module";
+import { RouterModule } from "@angular/router";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -23,24 +15,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: 'angular7-universal-translate'}),
-    HttpClientModule,
-    TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-    // LocalizeRouterModule.forRoot(routes, {
-    //   parser: {
-    //     provide: LocalizeParser,
-    //     useFactory: (translate, location, settings, http) =>
-    //         new LocalizeRouterHttpLoader(translate, location, settings, http),
-    //     deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
-    //   }
-    // }),
-    RouterModule.forRoot(routes),
+    AppClientModule,
     ShopModule,
+    RouterModule.forRoot(routes)
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

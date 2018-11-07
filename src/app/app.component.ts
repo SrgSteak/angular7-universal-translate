@@ -8,12 +8,12 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 })
 export class AppComponent  {
 
-  // constructor(private localizeRouterService: LocalizeRouterService) {
+  constructor(private localizeRouterService: LocalizeRouterService) {
 
-  // }
+  }
 
-  // switchLang(lang: string): void {
-  //   console.log(lang);
-  //   this.localizeRouterService.changeLanguage(lang);
-  // }
+  switchLang(lang: string): void {
+    console.log(lang);
+    this.localizeRouterService.changeLanguage(lang);
+  }
 }
