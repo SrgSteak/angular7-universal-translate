@@ -10,10 +10,12 @@ import { Location } from '@angular/common';
 
 export const routes: Routes = [
   {
-    path: 'list', component: ListComponent
+    path: 'list',
+    component: ListComponent
   },
   {
-    path: 'list/:country/:province/:town', component: ListComponent
+    path: 'list/:country/:province/:town',
+    component: ListComponent
   }
 ];
 

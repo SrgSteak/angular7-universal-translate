@@ -51,42 +51,10 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'demo'), {
 //   });
 // });
 
-// test
-// /**
-//  * bootstrap universal app
-//  * @param req
-//  * @param res
-//  */
-// function ngApp(req: any, res: any) {
-//   res.render('index', {
-//     req,
-//     res,
-//     ngModule: AppModule,
-//     preboot: false,
-//     baseUrl: '/',
-//     requestUrl: req.originalUrl,
-//     originUrl: req.hostname
-//   });
-// }
-
-// /**
-//  * use universal for specific routes
-//  */
-// app.get('/', ngApp);
-// routes.forEach(route => {
-//   app.get(`/${route}`, ngApp);
-//   app.get(`/${route}/*`, ngApp);
-// });
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-  res.render(join(DIST_FOLDER, 'demo', 'index.html'), { req });
+  res.render('index', {req});
 });
-// test end
-
-// All regular routes use the Universal engine
-// app.get('*', (req, res) => {
-//   res.render('index', {req});
-// });
 
 // Start up the Node server
 app.listen(PORT, () => {
