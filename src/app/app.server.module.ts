@@ -4,13 +4,14 @@ import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader'
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { LocalizeParser, LocalizeRouterSettings, LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { TranslateService, TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
+import { routes } from './app.client.module';
+
 // this will only work on the server because it is a node.js module.
 import * as fs from 'fs-extra';
-import { routes } from './app.client.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { routes } from './app.client.module';
           useFactory: translateLoaderFactory,
       }
     }),
+    RouterModule.forRoot(routes),
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,
@@ -31,10 +33,7 @@ import { routes } from './app.client.module';
       }
     })
   ],
-  bootstrap: [AppComponent],
-  exports: [
-    TranslatePipe
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppServerModule {
 }

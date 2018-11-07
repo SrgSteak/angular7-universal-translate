@@ -40,10 +40,40 @@ app.get('*.*', express.static(path_1.join(DIST_FOLDER, 'demo'), {
 //     res.sendFile(join(DIST_FOLDER, 'demo', file));
 //   });
 // });
+// test
+// /**
+//  * bootstrap universal app
+//  * @param req
+//  * @param res
+//  */
+// function ngApp(req: any, res: any) {
+//   res.render('index', {
+//     req,
+//     res,
+//     ngModule: AppModule,
+//     preboot: false,
+//     baseUrl: '/',
+//     requestUrl: req.originalUrl,
+//     originUrl: req.hostname
+//   });
+// }
+// /**
+//  * use universal for specific routes
+//  */
+// app.get('/', ngApp);
+// routes.forEach(route => {
+//   app.get(`/${route}`, ngApp);
+//   app.get(`/${route}/*`, ngApp);
+// });
 // All regular routes use the Universal engine
 app.get('*', function (req, res) {
-    res.render('index', { req: req });
+    res.render(path_1.join(DIST_FOLDER, 'demo', 'index.html'), { req: req });
 });
+// test end
+// All regular routes use the Universal engine
+// app.get('*', (req, res) => {
+//   res.render('index', {req});
+// });
 // Start up the Node server
 app.listen(PORT, function () {
     console.log("Node Express server listening on http://localhost:" + PORT);
