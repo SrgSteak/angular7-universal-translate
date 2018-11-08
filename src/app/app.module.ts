@@ -21,7 +21,7 @@ export function createTranslateLoader(http: HttpClient) {
       loader: {
           provide: TranslateLoader,
           useFactory: (createTranslateLoader),
-          deps: [/* PLATFORM_ID, */HttpClient]
+          deps: [HttpClient]
       }
     })
   ],

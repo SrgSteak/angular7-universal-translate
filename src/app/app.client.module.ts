@@ -24,7 +24,7 @@ export const routes: Routes = [
     component: ListComponent
   },
   {
-    path: 'list/:country',
+    path: 'list/:country/:province/:town',
     component: ListComponent
   },
   {
@@ -47,7 +47,7 @@ export const routes: Routes = [
       parser: {
         provide: LocalizeParser,
         useFactory: (createTranslateLoader),
-        deps: [TranslateService, Location, LocalizeRouterSettings/*, HttpClient*/]
+        deps: [TranslateService, Location, LocalizeRouterSettings]
       }
     }),
     RouterModule.forRoot(routes)
