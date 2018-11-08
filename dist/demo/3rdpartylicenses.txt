@@ -317,6 +317,9 @@ MIT
 @angular/core
 MIT
 
+@ngx-translate/http-loader
+MIT
+
 @angular/common
 MIT
 
@@ -330,10 +333,4 @@ MIT
 MIT
 
 @gilsdav/ngx-translate-router
-MIT
-
-@gilsdav/ngx-translate-router-http-loader
-MIT
-
-@ngx-translate/http-loader
 MIT

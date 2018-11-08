@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { TranslateModule, TranslateLoader, TranslateService, TranslatePipe } from "@ngx-translate/core";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { LocalizeRouterModule, LocalizeParser, LocalizeRouterSettings } from "@gilsdav/ngx-translate-router";
+import { LocalizeRouterModule, LocalizeParser, LocalizeRouterSettings, ManualParserLoader } from "@gilsdav/ngx-translate-router";
 import { LocalizeRouterHttpLoader } from "@gilsdav/ngx-translate-router-http-loader";
 import { Routes, RouterModule } from "@angular/router";
 import { ListComponent } from "./pages/shop/list/list.component";
@@ -12,6 +12,10 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+export function createTranslateLoader(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
+  return new ManualParserLoader(translate, location, settings, ['en', 'de'], 'ROUTES.');
 }
 
 export const routes: Routes = [
@@ -42,12 +46,12 @@ export const routes: Routes = [
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,
-        useFactory: (translate, location, settings, http) =>
-            new LocalizeRouterHttpLoader(translate, location, settings, http),
-        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
+        useFactory: (createTranslateLoader),
+        deps: [TranslateService, Location, LocalizeRouterSettings/*, HttpClient*/]
       }
     }),
     RouterModule.forRoot(routes,{ enableTracing: true } )
-  ]
+  ],
+  exports: [ RouterModule, LocalizeRouterModule ]
 })
 export class AppClientModule {}

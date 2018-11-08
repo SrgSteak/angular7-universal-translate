@@ -18,19 +18,19 @@ import * as fs from 'fs-extra';
     AppModule,
     ServerModule,
     ModuleMapLoaderModule,
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: translateLoaderFactory,
-      }
-    }),
-    LocalizeRouterModule.forRoot(routes, {
-      parser: {
-        provide: LocalizeParser,
-        useFactory: localizeLoaderFactory,
-        deps: [TranslateService, Location, LocalizeRouterSettings]
-      }
-    })
+    // TranslateModule.forRoot({
+    //   loader: {
+    //       provide: TranslateLoader,
+    //       useFactory: translateLoaderFactory,
+    //   }
+    // }),
+    // LocalizeRouterModule.forRoot(routes, {
+    //   parser: {
+    //     provide: LocalizeParser,
+    //     useFactory: localizeLoaderFactory,
+    //     deps: [TranslateService, Location, LocalizeRouterSettings]
+    //   }
+    // })
   ],
   bootstrap: [AppComponent]
 })
