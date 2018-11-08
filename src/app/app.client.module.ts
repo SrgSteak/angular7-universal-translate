@@ -7,6 +7,7 @@ import { LocalizeRouterHttpLoader } from "@gilsdav/ngx-translate-router-http-loa
 import { Routes, RouterModule } from "@angular/router";
 import { ListComponent } from "./pages/shop/list/list.component";
 import { Location } from '@angular/common';
+import { BetaComponent } from "./beta.component";
 
 export const routes: Routes = [
   {
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'list/:country/:province/:town',
     component: ListComponent
+  },
+  {
+    path: 'beta',
+    component: BetaComponent
   }
 ];
 
@@ -38,11 +43,6 @@ export const routes: Routes = [
       }
     }),
     RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule,
-    LocalizeRouterModule,
-    TranslatePipe
   ]
 })
 export class AppClientModule {}

@@ -5,6 +5,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { ShopModule } from './pages/shop/shop.module';
 import { AppClientModule, routes } from "./app.client.module";
+import { BetaComponent } from "./beta.component";
+import { RouterModule } from "@angular/router";
+import { TranslatePipe, TranslateModule } from "@ngx-translate/core";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -15,9 +18,11 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule.withServerTransition({appId: 'angular7-universal-translate'}),
     AppClientModule,
-    ShopModule
+    ShopModule,
+    TranslateModule,
+    // RouterModule.forChild([])
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, BetaComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

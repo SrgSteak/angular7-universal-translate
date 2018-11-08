@@ -12,6 +12,8 @@ var http_loader_1 = require("@ngx-translate/http-loader");
 var app_component_1 = require("./app.component");
 var shop_module_1 = require("./pages/shop/shop.module");
 var app_client_module_1 = require("./app.client.module");
+var beta_component_1 = require("./beta.component");
+var core_2 = require("@ngx-translate/core");
 // AoT requires an exported function for factories
 function HttpLoaderFactory(http) {
     return new http_loader_1.TranslateHttpLoader(http);
@@ -25,9 +27,10 @@ var AppModule = /** @class */ (function () {
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'angular7-universal-translate' }),
                 app_client_module_1.AppClientModule,
-                shop_module_1.ShopModule
+                shop_module_1.ShopModule,
+                core_2.TranslateModule,
             ],
-            declarations: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, beta_component_1.BetaComponent],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

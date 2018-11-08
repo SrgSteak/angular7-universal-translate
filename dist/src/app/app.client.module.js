@@ -15,12 +15,19 @@ var ngx_translate_router_http_loader_1 = require("@gilsdav/ngx-translate-router-
 var router_1 = require("@angular/router");
 var list_component_1 = require("./pages/shop/list/list.component");
 var common_1 = require("@angular/common");
+var beta_component_1 = require("./beta.component");
 exports.routes = [
     {
-        path: 'list', component: list_component_1.ListComponent
+        path: 'list',
+        component: list_component_1.ListComponent
     },
     {
-        path: 'list/:country/:province/:town', component: list_component_1.ListComponent
+        path: 'list/:country/:province/:town',
+        component: list_component_1.ListComponent
+    },
+    {
+        path: 'beta',
+        component: beta_component_1.BetaComponent
     }
 ];
 var AppClientModule = /** @class */ (function () {
@@ -47,11 +54,6 @@ var AppClientModule = /** @class */ (function () {
                     }
                 }),
                 router_1.RouterModule.forRoot(exports.routes)
-            ],
-            exports: [
-                router_1.RouterModule,
-                ngx_translate_router_1.LocalizeRouterModule,
-                core_2.TranslatePipe
             ]
         })
     ], AppClientModule);

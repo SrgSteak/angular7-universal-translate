@@ -8,9 +8,6 @@ import * as express from 'express';
 import {join} from 'path';
 import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
-import { AppModule } from './src/app/app.module';
-import { routes } from './src/app/app.client.module';
-
 // import {STATIC_ROUTES} from './src/app/app-routing.module';
 
 // Faster server renders w/ Prod mode (dev mode never needed)

@@ -13,6 +13,7 @@ import { routes } from './app.client.module';
 // this will only work on the server because it is a node.js module.
 import * as fs from 'fs-extra';
 
+
 @NgModule({
   imports: [
     AppModule,
@@ -24,14 +25,14 @@ import * as fs from 'fs-extra';
           useFactory: translateLoaderFactory,
       }
     }),
-    RouterModule.forRoot(routes),
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,
         useFactory: localizeLoaderFactory,
         deps: [TranslateService, Location, LocalizeRouterSettings]
       }
-    })
+    }),
+    RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
 })

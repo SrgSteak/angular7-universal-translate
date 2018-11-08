@@ -11,9 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ngx_translate_router_1 = require("@gilsdav/ngx-translate-router");
+var router_1 = require("@angular/router");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(localizeRouterService) {
+    function AppComponent(localizeRouterService, router) {
         this.localizeRouterService = localizeRouterService;
+        console.log('=================================');
+        console.log(router.config[0].children[0]); // all routes are double??
+        console.log(router.config[0].children[1]);
+        // console.log(router.config[0].children[2]);
+        console.log('=================================');
     }
     AppComponent.prototype.switchLang = function (lang) {
         this.localizeRouterService.changeLanguage(lang);
@@ -24,7 +30,7 @@ var AppComponent = /** @class */ (function () {
             templateUrl: './app.component.html',
             styleUrls: ['./app.component.css']
         }),
-        __metadata("design:paramtypes", [ngx_translate_router_1.LocalizeRouterService])
+        __metadata("design:paramtypes", [ngx_translate_router_1.LocalizeRouterService, router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());
