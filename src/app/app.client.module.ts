@@ -50,7 +50,7 @@ export const routes: Routes = [
         deps: [TranslateService, Location, LocalizeRouterSettings/*, HttpClient*/]
       }
     }),
-    RouterModule.forRoot(routes,{ enableTracing: true } )
+    RouterModule.forRoot(routes)
   ],
   exports: [ RouterModule, LocalizeRouterModule ]
 })
