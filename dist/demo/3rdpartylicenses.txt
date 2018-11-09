@@ -311,15 +311,6 @@ Apache-2.0
  
 
 
-@angular/compiler
-MIT
-
-@angular/core
-MIT
-
-@ngx-translate/http-loader
-MIT
-
 @angular/common
 MIT
 
@@ -329,7 +320,16 @@ MIT
 @angular/router
 MIT
 
+@ngx-translate/http-loader
+MIT
+
 @ngx-translate/core
+MIT
+
+@angular/core
+MIT
+
+@angular/compiler
 MIT
 
 @gilsdav/ngx-translate-router

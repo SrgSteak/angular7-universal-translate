@@ -52,6 +52,10 @@ export const routes: Routes = [
   {
     path: 'beta',
     component: BetaComponent
+  },
+  {
+    path: 'school',
+    loadChildren: './pages/school/school.module#SchoolModule'
   }
 ];
 

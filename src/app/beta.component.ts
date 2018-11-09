@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BetaComponent implements OnInit {
 
-  public townslug: string;
-
   constructor() {
   }
 
