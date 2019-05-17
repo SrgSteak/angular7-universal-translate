@@ -1,5 +1,5 @@
 # angular7-universal-translate
-Empty Angular 7 App including translateable routes, SSR and startup scripts
+Empty Angular 7 App including translateable routes, (with lazy modules), SSR and startup scripts
 
 # How to install
 ``` sh
