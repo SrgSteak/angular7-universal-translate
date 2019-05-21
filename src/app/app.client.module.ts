@@ -42,9 +42,11 @@ export class LocalizeUniversalLoader extends LocalizeParser {
         this.prefix = data.prefix;
         this.init(routes).then(resolve);
       } else {
-        let link = "http://localhost:4200/assets/locales.json";
+        let link = "";
         if (isPlatformServer(this.platformId)) {
           link = "http://localhost:4000/assets/locales.json";
+        } else {
+          link = "/assets/locales.json";
         }
         this.httpClient
           .get<{ locales: Array<string>, prefix: string }>(link)
