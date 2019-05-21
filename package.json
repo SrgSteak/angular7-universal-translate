@@ -13,6 +13,10 @@
     "@angular/platform-browser-dynamic": "7.2.15",
     "@angular/platform-server": "^7.2.15",
     "@angular/router": "7.2.15",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
     "@gilsdav/ngx-translate-router": "1.0.2",
     "@gilsdav/ngx-translate-router-http-loader": "1.0.0",
     "@nguniversal/express-engine": "^7.0.2",
@@ -35,6 +39,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "prebuild": "babel node_modules/localize-router-lazy-universal-module-loader/ --out-dir node_modules/localize-router-lazy-universal-module-loader/ --presets @babel/preset-env,@babel/preset-typescript",
     "build:ssr": "ng build --prod && ng run demo:server:production && tsc -p server.tsconfig.json",
     "serve:ssr": "node dist/server"
   },
