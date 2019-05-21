@@ -32,7 +32,7 @@ export class LocalizeUniversalLoader extends LocalizeParser {
    * Gets config from the server
    * @param routes
    */
-  public load(routes: Routes): Promise<any> {
+  load(routes: Routes): Promise<any> {
     return new Promise((resolve: any) => {
       const routesKey = makeStateKey<{ locales: Array<string>, prefix: string }>('routes');
       if (this.transferState.hasKey(routesKey)) {
@@ -42,8 +42,12 @@ export class LocalizeUniversalLoader extends LocalizeParser {
         this.prefix = data.prefix;
         this.init(routes).then(resolve);
       } else {
+        let link = "http://localhost:4200/assets/locales.json";
+        if (isPlatformServer(this.platformId)) {
+          link = "http://localhost:4000/assets/locales.json";
+        }
         this.httpClient
-          .get<{ locales: Array<string>, prefix: string }>("http://localhost:4000/assets/locales.json")
+          .get<{ locales: Array<string>, prefix: string }>(link)
           .subscribe(
             data => {
               if (isPlatformServer(this.platformId)) {
@@ -80,28 +84,17 @@ export function localizeLoaderFactory(
 
 export const routes: Routes = [
   // Some random default components to switch
-  {
-    path: '',
-    component: ListComponent
-  },
-  {
-    path: 'list/:country/:province/:town',
-    component: ListComponent
-  },
-  {
-    path: 'beta',
-    component: BetaComponent
-  },
-  {
-    // this is a lazy loaded module. The components will only load if you surf to the routes.
-    path: 'school',
-    loadChildren: './pages/school/school.module#SchoolModule'
-  }
+  { path: '', component: ListComponent },
+  { path: 'list/:country/:province/:town', component: ListComponent },
+  { path: 'beta', component: BetaComponent },
+  // this is a lazy loaded module. The components will only load if you surf to the routes.
+  { path: 'SCHOOL', loadChildren: './pages/school/school.module#SchoolModule' }
 ];
 
 @NgModule({
   imports: [
     HttpClientModule,
+    RouterModule.forRoot(routes),
     // i am the custom parser for routes
     LocalizeRouterModule.forRoot(routes, {
       parser: {
@@ -109,8 +102,7 @@ export const routes: Routes = [
         useFactory: localizeLoaderFactory,
         deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient, PLATFORM_ID, TransferState]
       }
-    }),
-    RouterModule.forRoot(routes)
+    })
   ],
   exports: [RouterModule, LocalizeRouterModule]
 })

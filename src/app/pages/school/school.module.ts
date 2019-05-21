@@ -17,4 +17,4 @@ import { SchoolRoutingModule } from './school-routing.module';
     ListComponent
   ]
 })
-export class SchoolModule {}
+export class SchoolModule { }

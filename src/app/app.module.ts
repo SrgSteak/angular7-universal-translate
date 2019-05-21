@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 
 // i am the custom TranslateHttpLoader to leverage SSR
 import { TranslateHttpLoader } from "./ssr/TranslateHttpLoader";
+import { isPlatformBrowser } from '@angular/common';
 
 /**
  *
@@ -21,7 +22,14 @@ export function createTranslateLoader(http: HttpClient, transferstate: TransferS
    * Protip: use the if(isPlatformServer(platformId)) {} else {}
    * if you want to load your translations differently on server/client
    */
-  return new TranslateHttpLoader(http, transferstate, platformId, `http://localhost:4000/assets/i18n/`, '.json');
+  if (isPlatformBrowser(platformId)) {
+
+    return new TranslateHttpLoader(http, transferstate, platformId, `http://localhost:4200/assets/i18n/`, '.json');
+  } else {
+
+    return new TranslateHttpLoader(http, transferstate, platformId, `http://localhost:4000/assets/i18n/`, '.json');
+  }
+
 }
 
 @NgModule({
